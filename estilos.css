@@ -1,0 +1,293 @@
+/* Initial config */
+
+:root {
+    --primary-color: 255, 255, 255;
+    --secondary-color: 139, 0, 204;
+    --white: 255, 255, 255;
+    --black: 0, 0, 0;
+    --purple: 129, 65, 239;
+    --blue: 13, 142, 255;
+    --yellow: 255, 120, 66;
+    --red: 252, 55, 0;
+    --gradint-01: rgba(var(--purple), 0.9), rgba(var(--blue), 0.8);
+    --gradint-02: rgb(var(--red)), rgb(var(--yellow));
+    --border-radius: 0.5rem;
+    --max-width-response: 600px
+  }
+  
+  *,
+  *::after,
+  *::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
+  }
+
+@media screen and (max-width: 600px) {
+ *,
+ *::after,
+ *::before {
+    font-size: 55%;
+ }
+}
+
+/* Body styles */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+  
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30rem;
+    z-index: -1;
+    background: linear-gradient(to right, var(--gradint-01)),
+      url('https://fondosmil.com/fondo/2257.jpg');
+    background-size: cover;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 600px) {
+    body::before {
+        height: 50vh;
+    }
+}
+
+/*Header styles*/
+header {
+    padding: 4rem 1rem;
+
+}
+
+.title {
+    font-size: 4rem;
+    color: rgb(var(--white));
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        padding: 2rem;
+    }
+    .title {
+        font-size: 3rem;
+    }
+}
+
+/*Inputs style*/
+.input {
+    width: 100%;
+    height: 5rem;
+    font-size: 1.8rem;
+    padding: 0 1.5rem;
+    border-radius: var(--border-radius);
+    border: none;
+    border-bottom: 0.2rem solid rgba(var(--primary-color));
+    background: rgb(var(--white));
+    outline: none;
+    transition: all 0.2s linear;
+}
+
+.input::focus {
+    box-shadow: 0rem 0rem 2rem 0rem rgba(var(--primary-color), 0.475);
+}
+
+/*Boton styles*/
+.button {
+    height: 5rem;
+    padding: 0 1.5rem;
+    font-size: 1.6rem;
+    border-radius: var(--border-radius);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2 ease-in-out;
+}
+
+.button.btn-contrast {
+    background: rgb(var(--white));
+    color: rgba(var(--blue));
+}
+
+.button.btn-contrast:hover {
+    color: rgba(var(--purple));
+    box-shadow: 0rem 0rem 2rem 0rem rgba(var(--primary-color), 0.475);
+}
+
+.button.btn-primary {
+    background: linear-gradient(45deg, var(--gradint-01));
+    color: rgb(var(--white));
+
+}
+
+.button.btn-primary:hover {
+    box-shadow: 0rem 0rem 2rem 0rem rgba(var(--primary-color), 0.475);
+}
+
+.button.btn-outline-primary {
+    background: linear-gradient(45deg, var(--gradint-01));
+    color: rgba(var(--blue));
+    position: relative;
+}
+
+.button.button.btn-outline-primary::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(100% - 0.4rem);
+    height: calc(100% - 0.4rem);
+    background: rgb(var(--white));
+    color: rgba(var(--blue));
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
+}
+
+.button.btn-outline-primary:hover {
+    box-shadow: 0rem 0rem 2rem 0rem rgba(var(--primary-color), 0.475);
+    color: rgba(var(--purple));
+}
+
+.button.btn-danger {
+    background: linear-gradient(45deg, var(--gradint-02));
+    color: rgb(var(--white));
+}
+
+.button.btn-danger {
+    box-shadow: 0rem 0rem 2rem 0rem rgba(var(--primary-color), 0.475);
+}
+
+.button.btn-text {
+    background: transparent;
+    color: rgb(var(--blue));
+    height: unset;
+    padding: 1rem;
+}
+
+.button.btn-text:hover {
+    text-decoration: underline;
+    color: rgb(var(--purple));
+}
+
+
+/*List styles*/
+#list-todo {
+    display: flex;
+    flex-direction: column;
+    max-height: 30rem;
+    overflow: auto;
+}
+
+#list-todo li {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    column-gap: 1.5rem;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    border-radius: var(--border-radius);
+}
+
+#list-todo li:hover {
+    background-color: rgba(var(--black) 0.05);
+}
+
+#list-todo li span {
+    width: 100%;
+    word-break: break-all; /*Si el texto esta muy largo no se desborde*/
+    font-size: 1.6rem;
+    color: rgba(var(--black));
+    transition: all 0.2s ease-in-out;
+}
+
+#list-todo li span[style*= "line-through"] {
+    color: rgba(var(--blue));
+}
+
+#list-todo li button {
+    border-radius: 50rem;
+    font-size: 2rem;
+    font-weight: 900;
+    padding: 0;
+    height: 3.5rem;
+    width: 3.5rem;
+    min-width: 3.5rem;
+}
+
+@media screen and (max-width: 600px) {
+    #list-todo {
+        max-height: calc(62vh - 10rem);
+    }
+}
+
+
+/*Layout styles*/
+main {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    width: 100%;
+    max-width: 70rem;
+}
+
+main .form-to-do {
+    display: flex;
+    gap: 1rem 2rem;
+}
+
+main .list-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background-color: rgb(var(--white));
+    border-radius: var(--border-radius);
+    box-shadow: 0 0.5rem 2rem -0.3rem rgba(var(--black), 0.1);
+}
+
+main .list-container .list-container__actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    border-top: 0.1rem solid rgba(var(--black), 0.1);
+    padding-top: 1.5rem;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1.6rem;
+    position: fixed;
+    bottom: 0;
+    background: rgb(var(--white));
+    box-shadow: 0 -0.5rem 2rem -0.3rem rgba(var(--black), 0.1);
+}
+
+footer span {
+    font-size: 1.6rem; 
+}
+
+
+@media screen and (max-width: 600px) {
+    main {
+        width: 100%;
+    }
+    .form-to-do {
+        flex-direction: column;
+        padding: 0 2rem;
+    }
+    .list-container {
+        padding: 1rem;
+    }
+    .list-container__actions {
+        flex-direction: column;
+    }
+}
